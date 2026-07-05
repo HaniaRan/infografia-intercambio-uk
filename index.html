@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Accomplished: Aberdeen Campaign</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="intro-modal" class="modal-overlay">
+        <div class="modal-box">
+            <h2>[ CAMPAÑA ABERDEEN: EXPEDIENTE COMPLETO ]</h2>
+            <div class="modal-line"></div>
+            <p class="modal-alert">⚠️ TELEMETRÍA TÁCTICA DETECTADA</p>
+            <p>Utiliza los sistemas del HUD para inspeccionar los conocimientos adquiridos:</p>
+            <ul class="modal-instructions">
+                <li>🔹 <strong>Sincronización de Ruta:</strong> Pasa el cursor sobre los puntos de la <strong>Gráfica de Pasos</strong> para iluminar las ciudades de despliegue en el mapa central.</li>
+                <li>🔹 <strong>Análisis de Ítems:</strong> Explora las pestañas de misiones e interactúa con los objetos de tu <strong>Inventario</strong> para inspeccionar los logros y habilidades desbloqueadas.</li>
+            </ul>
+            <button class="modal-btn" onclick="iniciarHUD()">INICIAR INTERFAZ ></button>
+        </div>
+    </div>
+
+    <div class="game-container">
+        
+        <header class="player-profile">
+            <div class="avatar-slot">
+                <div class="avatar-placeholder"></div>
+            </div>
+            <div class="player-stats">
+                <h1>MISSION ACCOMPLISHED</h1>
+                <p>PLAYER: <span class="highlight">Hania</span> | LVL: 21</p>
+                <p>BASE CENTRAL: <span class="highlight">Aberdeen, Escocia</span></p>
+            </div>
+        </header>
+
+        <section class="left-panel">
+            <div class="chart-box">
+                <h3>REGISTRO DE PASOS (SEMANAL)</h3>
+                <div class="chart-container">
+                    <canvas id="stepsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="charts-subgrid">
+                <div class="chart-box">
+                    <h3>PERFIL CULTURAL</h3>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h3>TIEMPO FUERA DEL AULA</h3>
+                    <div class="chart-container">
+                        <canvas id="donutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="center-panel">
+            <div class="map-container">
+                <h3>MAPA DE CAMPAÑA - DESBLOQUEADO</h3>
+                <div id="uk-map"></div>
+            </div>
+        </section>
+
+        <section class="right-panel">
+            <div class="tabs-menu">
+                <button class="tab-btn active" onclick="switchTab('academia', event)">ACADEMIA</button>
+                <button class="tab-btn" onclick="switchTab('npcs', event)">RED GLOBAL</button>
+                <button class="tab-btn" onclick="switchTab('logros', event)">MISIONES SECUNDARIAS</button>
+            </div>
+            
+            <div class="tab-content" id="tab-display">
+                <ul class="stats-list">
+                    <li><strong>Misión: El Método Británico</strong> - Adaptación exitosa a formato de <i>Lectures</i>, tutoriales y trabajo asíncrono.</li>
+                    <li><strong>Lectura de Alta Densidad</strong> - Escritura de ensayos basados en el análisis profundo de textos clásicos.</li>
+                    <li><strong>Argumentos Filosóficos</strong> - Dominio de argumentos lógicos y defensa de posturas filosóficas en <i>Tutorials</i>.</li>
+                    <li><strong>Inglés Académico Reforzado</strong> - Mejora en confianza y fluidez en la comunicación académica.</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="bottom-panel">
+            <div class="inventory-grid">
+                <div class="item-slot" data-item="brujula">
+                    <span class="item-icon">🧭</span>
+                </div>
+                <div class="item-slot" data-item="libro">
+                    <span class="item-icon">📖</span>
+                </div>
+                <div class="item-slot" data-item="abrigo">
+                    <span class="item-icon">🧥</span>
+                </div>
+                <div class="item-slot" data-item="tacos">
+                    <span class="item-icon">🌮</span>
+                </div>
+                <div class="item-slot" data-item="madera">
+                    <span class="item-icon">🪓</span>
+                </div>
+            </div>
+            <button class="continue-btn">CONTINUE ></button>
+        </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
